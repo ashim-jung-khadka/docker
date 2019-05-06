@@ -15,6 +15,11 @@ Vagrant.configure("2") do |config|
 
     args = []
     config.vm.provision "shell",
+        path: "scripts/java.sh",
+        args: args
+
+    args = []
+    config.vm.provision "shell",
         path: "scripts/docker.sh",
         args: args
 

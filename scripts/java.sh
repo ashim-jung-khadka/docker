@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "**** Begin setting java environment"
+echo "**** Begin Java Download"
 
 # Update package
 apt-get update -y
@@ -18,3 +18,5 @@ apt-get install -y oracle-java8-installer > /dev/null 2>&1
 
 # Install maven
 apt-get install -y maven
+
+echo "**** End Java Download"
