@@ -1,7 +1,7 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/xenial64"
 
-  config.vm.define "local_server" do |ubuntu_minikube|
+  config.vm.define "ubuntu_minikube" do |ubuntu_minikube|
 
     config.vm.network "forwarded_port",
       guest: 8001,
@@ -9,29 +9,24 @@ Vagrant.configure("2") do |config|
       auto_correct: true
 
     config.vm.provider "virtualbox" do |vb|
-        vb.name = "Local Server"
+        vb.name = "Ubuntu Minikube"
         vb.memory = "4096"
-        vb.cpus = "2"
+        vb.cpus = "4"
 
-    # args = []
-    # config.vm.provision "shell",
-        # path: "scripts/java.sh",
-        # args: args
+    args = []
+    config.vm.provision "shell",
+        path: "scripts/docker.sh",
+        args: args
 
-    # args = []
-    # config.vm.provision "shell",
-    #     path: "scripts/docker.sh",
-    #     args: args
+    args = []
+    config.vm.provision "shell",
+        path: "scripts/minikube.sh",
+        args: args
 
-    # args = []
-    # config.vm.provision "shell",
-    #     path: "scripts/minikube.sh",
-    #     args: args
-
-    # args = []
-    # config.vm.provision "shell",
-    #     path: "scripts/kubectl.sh",
-    #     args: args
+    args = []
+    config.vm.provision "shell",
+        path: "scripts/kubectl.sh",
+        args: args
     end
 
   end
